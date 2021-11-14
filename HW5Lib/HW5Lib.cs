@@ -109,7 +109,6 @@ namespace HW5Library
             {
                 Swap(ref array[i], ref array[array.Length - i - 1]);
             }
-
         }
 
         public static int NumOfOddElements(int[] array) //HW Task7
@@ -153,6 +152,7 @@ namespace HW5Library
             for (int i = 0; i < array.Length - 1; i++)
             {
                 int index = i;
+
                 for (int j = i + 1; j < array.Length; j++)
                 {
                     if (CompareMethod(array[j], array[index]) == true)
@@ -165,6 +165,7 @@ namespace HW5Library
                 {
                     Swap(ref array[i], ref array[index]);
                 }
+
             }
         }
 

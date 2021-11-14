@@ -57,13 +57,13 @@ namespace HomeWork_5
             Console.Write("\nInsertionSort > ");
             HW5Lib.InsertionSort(array, HW5Lib.Greater);
             HW5Lib.Printarray(array);
-            
+
             Console.Write("\nDeleteNegativeElementsFromArray ");
             HW5Lib.Printarray(HW5Lib.InsertArrayToArray(array, array1, 3));
 
             Console.Write("\nInsertArrayToArray ");
             HW5Lib.Printarray(HW5Lib.DeleteNegativeElementsFromArray(HW5Lib.InsertArrayToArray(array, array1, 5)));
-            
+
             Console.WriteLine("\nmin element " + HW5Lib.MinElementOfArray(array));
             Console.WriteLine("max element " + HW5Lib.MaxElementOfArray(array));
             Console.WriteLine("index of min element " + HW5Lib.IndexOfMinElementOfArray(array));
