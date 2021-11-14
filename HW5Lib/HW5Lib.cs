@@ -34,41 +34,12 @@ namespace HW5Library
             return a < b;
         }
 
-        public static int MinElementOfArray(int[] array) //HW Task1
-        {
-            int min = array[0];
-            for (int i = 0; i < array.Length; i++)
-            {
-                if (array[i] < min)
-                {
-                    min = array[i];
-                }
-            }
-
-            return min;
-        }
-
-        public static int MaxElementOfArray(int[] array)    //HW Task2
-        {
-            int max = array[0];
-            for (int i = 0; i < array.Length; i++)
-            {
-                if (array[i] > max)
-                {
-                    max = array[i];
-                }
-            }
-
-            return max;
-        }
-
         public static int IndexOfMinElementOfArray(int[] array) //HW Task3
         {
-            int min = array[0];
             int index = 0;
             for (int i = 0; i < array.Length; i++)
             {
-                if (array[i] < min)
+                if (array[i] < array[index])
                 {
                     index = i;
                 }
@@ -79,17 +50,26 @@ namespace HW5Library
 
         public static int IndexOfMaxElementOfArray(int[] array) //HW Task4
         {
-            int max = array[0];
             int index = 0;
             for (int i = 0; i < array.Length; i++)
             {
-                if (array[i] > max)
+                if (array[i] > array[index])
                 {
                     index = i;
                 }
             }
 
             return index;
+        }
+
+        public static int MinElementOfArray(int[] array) //HW Task1
+        {
+            return array[IndexOfMinElementOfArray(array)];
+        }
+
+        public static int MaxElementOfArray(int[] array)    //HW Task2
+        {
+            return array[IndexOfMaxElementOfArray(array)];
         }
 
         public static int SumOddIndxElemOfArray(int[] array)    //HW Task5
@@ -152,7 +132,6 @@ namespace HW5Library
             for (int i = 0; i < array.Length - 1; i++)
             {
                 int index = i;
-
                 for (int j = i + 1; j < array.Length; j++)
                 {
                     if (CompareMethod(array[j], array[index]) == true)
