@@ -119,7 +119,7 @@ namespace HW5Library
             {
                 for (int j = 0; i < array.Length - j - 1; ++j)
                 {
-                    if (CompareMethod(array[j], array[j + 1]) == false)
+                    if (!CompareMethod(array[j], array[j + 1]))
                     {
                         Swap(ref array[j], ref array[j + 1]);
                     }
@@ -134,7 +134,7 @@ namespace HW5Library
                 int index = i;
                 for (int j = i + 1; j < array.Length; j++)
                 {
-                    if (CompareMethod(array[j], array[index]) == true)
+                    if (CompareMethod(array[j], array[index]))
                     {
                         index = j;
                     }
@@ -156,62 +156,61 @@ namespace HW5Library
                 int j = i - 1;
                 while (j >= 0 && (CompareMethod(array[j], temp) == false))
                 {
-                    array[j + 1] = array[j];
-                    --j;
+                    array[j + 1] = array[j--];
                 }
 
                 array[j + 1] = temp;
             }
         }
 
-        public static int[] InsertArrayToArray(int[] inarray, int[] putarray, int position) // ClassWork MediumTask3
+        public static int[] InsertArrayToArray(int[] inArray, int[] putArray, int position) // ClassWork MediumTask3
         {
-            int lenght = inarray.Length + putarray.Length;
-            int[] resultarray = new int[lenght];
+            int lenght = inArray.Length + putArray.Length;
+            int[] resultArray = new int[lenght];
             int index = 0;
             for (int i = 0; i < lenght; i++)
             {
-                resultarray[i] = inarray[i];
+                resultArray[i] = inArray[i];
                 if (i == position)
                 {
                     index = i;
                     break;
                 }
             }
-            for (int i = position, k = 0; i < position + putarray.Length; ++i, ++k)
+            for (int i = position, k = 0; i < position + putArray.Length; ++i, ++k)
             {
-                resultarray[i] = putarray[k];
+                resultArray[i] = putArray[k];
             }
-            for (int i = position + putarray.Length + 1; i < lenght; ++i)
+            for (int i = position + putArray.Length + 1; i < lenght; ++i)
             {
-                resultarray[i] = inarray[++index];
+                resultArray[i] = inArray[++index];
             }
 
-            return resultarray;
+            return resultArray;
         }
 
         public static int[] DeleteNegativeElementsFromArray(int[] array) // ClassWork MediumTask2
         {
-            int numofnegative = 0;
+            int negativeElementCount = 0;
             for (int i = 0; i < array.Length; ++i)
             {
                 if (array[i] < 0)
                 {
-                    numofnegative++;
+                    negativeElementCount++;
                 }
             }
 
-            int[] newarray = new int[array.Length - numofnegative];
+            int[] newArray = new int[array.Length - negativeElementCount];
             int index = 0;
             for (int i = 0; i < array.Length; ++i)
             {
                 if (array[i] >= 0)
                 {
-                    newarray[index++] = array[i];
+                    newArray[index++] = array[i];
                 }
             }
 
-            return newarray;
+            return newArray;
         }
 
         public static int NumOfCharInString(string str, char ch)
@@ -231,43 +230,40 @@ namespace HW5Library
         public static string ExtractWordsWithChar(string str, char ch) // ClassWork HardTask2
         {
             string result = "";
-            int numofch = NumOfCharInString(str, ch);
-            int[] chindex = new int[numofch];
-            int numofspaces = 2 + NumOfCharInString(str, ' ');
-            int[] spacesindex = new int[numofspaces];
+            int numOfChar = NumOfCharInString(str, ch);
+            int[] charIndex = new int[numOfChar];
+            int numOfSpaces = 2 + NumOfCharInString(str, ' ');
+            int[] spacesIndex = new int[numOfSpaces];
+            int i = 0;
             int j = 0;
-            int k = 0;
-            for (int i = 0; i < str.Length; ++i)
+            for (int k = 0; k < str.Length; ++k)
             {
-                if (str[i] == ch)
+                if (str[k] == ch)
                 {
-                    chindex[j++] = i;
+                    charIndex[i++] = k;
                 }
-                else if (str[i] == ' ')
+                else if (str[k] == ' ')
                 {
-                    spacesindex[++k] = i;
+                    spacesIndex[++j] = k;
                 }
             }
 
-            spacesindex[++k] = str.Length;
-            k++;
-            int s = 0;
-            for (int i = 0; i < k; ++i)
+            spacesIndex[++j] = str.Length;
+            j = 0;
+            for (int k = 0; k < numOfSpaces; ++k)
             {
-                if ((s >= numofch) || ((i + 1) >= numofspaces))
+                if ((j >= numOfChar) || ((k + 1) >= numOfSpaces))
                 {
                     break;
                 }
-                if ((spacesindex[i] < chindex[s]) && (chindex[s] < spacesindex[i + 1]))
+                if ((spacesIndex[k] < charIndex[j]) && (charIndex[j] < spacesIndex[k + 1]))
                 {
-                    int ind = i;
-                    for (int t = spacesindex[ind]; t < spacesindex[ind + 1]; t++)
+                    for (int l = spacesIndex[k]; l < spacesIndex[k + 1]; l++)
                     {
-
-                        result += str[t];
+                        result += str[l];
                     }
 
-                    s++;
+                    j++;
                 }
 
                 result += " ";
