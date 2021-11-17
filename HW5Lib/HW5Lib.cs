@@ -109,7 +109,7 @@ namespace HW5Library
         {
             for (int i = 0; i < array.Length / 2; ++i)
             {
-                Swap(ref array[i], ref array[array.Length / 2 + i]);
+                Swap(ref array[i], ref array[array.Length % 2 + array.Length / 2 + i]);
             }
         }
 

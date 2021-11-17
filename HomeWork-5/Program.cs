@@ -12,7 +12,7 @@ namespace HomeWork_5
             char ch = 'e';
             Console.WriteLine(HW5Lib.ExtractWordsWithChar(str, ch));
             Console.WriteLine(HW5Lib.ExtractWordsWithChar(str, 'o'));
-            int[] array = new int[10];
+            int[] array = new int[11];
             int[] array1 = new int[10];
             Random random = new Random();
             for (int i = 0; i < array.Length; i++)
